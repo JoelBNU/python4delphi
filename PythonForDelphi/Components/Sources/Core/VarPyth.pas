@@ -115,7 +115,7 @@ function iter(const AValue : Variant ) : Variant; // return an iterator for the 
 implementation
 
 uses
-  VarUtils, SysUtils, SysConst, TypInfo, Classes;
+  VarUtils, SysUtils, SysConst, TypInfo; //the pythonengine.pas interface contains classes,detele it also worked.
 
 type
   TNamedParamDesc = record
@@ -127,12 +127,12 @@ type
 {$IFDEF DELPHIXE2_OR_HIGHER}
   {$DEFINE USESYSTEMDISPINVOKE}  //Delphi 2010 DispInvoke is buggy
 {$ENDIF}
-{.$IF DEFINED(FPC_FULLVERSION) and (FPC_FULLVERSION >= 20500)}
-  {.$DEFINE USESYSTEMDISPINVOKE}
-{.$IFEND}
+{$IF DEFINED(FPC_FULLVERSION) and (FPC_FULLVERSION >= 20500)}
+  {$DEFINE USESYSTEMDISPINVOKE}
+{$IFEND}
 
   { Python variant type handler }
-  TPythonVariantType = class(TInvokeableVariantType, IVarInstanceReference)
+  TPythonVariantType = class(TInvokeableVariantType, IVarInstanceReference)//have a attention about this class;
   protected
     fNamedParams : TNamedParamArray;
     function LeftPromotion(const V: TVarData; const AOperator: TVarOp;
@@ -187,8 +187,8 @@ type
       [Ref] const Source: TVarData; CallDesc: PCallDesc; Params: Pointer);override;
     {$ELSE}
     procedure DispInvoke(Dest: PVarData;
-       var Source: TVarData; CallDesc: PCallDesc; Params: Pointer);override;
-    {$ENDIF}
+       var Source: TVarData; CallDesc: PCallDesc; Params: Pointer);reintroduce;//in Delphi7 with Python2.7.14, may not be install by override,can change to reintroduce i think.
+    {$ENDIF}                               //and i have installed succeed.2018.04.13 by JoelBNU.
   end;
 
 var
