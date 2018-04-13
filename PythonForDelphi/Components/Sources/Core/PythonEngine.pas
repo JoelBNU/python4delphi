@@ -82,7 +82,7 @@ uses
   Classes,
   SysUtils,
   SyncObjs,
-  Variants,
+  
 {$IFDEF DELPHI2005_OR_HIGHER}
 {$IFNDEF UNICODE}
   WideStrings,
@@ -3145,7 +3145,7 @@ procedure MaskFPUExceptions(ExceptionsMasked : boolean;
 implementation
 
 {$IFDEF MSWINDOWS}
-uses Registry;
+uses Registry,VarPyth,Variants;
 {$ENDIF}
 
 
