@@ -35,8 +35,8 @@ contains
   WrapDelphi in 'Sources\Core\WrapDelphi.pas',
   PythonGUIInputOutput in 'Sources\Core\PythonGUIInputOutput.pas',
   MethodCallback in 'Sources\Core\MethodCallBack.pas',
-  AtomPythonEngine in 'Sources\Core\AtomPythonEngine.pas',
-  PythonAtom in 'Sources\Core\PythonAtom.pas',
+  //AtomPythonEngine in 'Sources\Core\AtomPythonEngine.pas',
+  //PythonAtom in 'Sources\Core\PythonAtom.pas',
   VarPyth in 'Sources\Core\VarPyth.pas',
   TinyWideStrings in 'Sources\Core\TinyWideStrings.pas';
 
